@@ -1,0 +1,33 @@
+{
+  "name": "faceapi",
+  "version": "1.0.0",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.18.3",
+    "clarifai": "^2.9.0",
+    "cors": "^2.8.4",
+    "dotenv": "^16.0.3",
+    "express": "^4.16.4",
+    "knex": "^2.4.2",
+    "pg": "^8.10.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdilmajid/faceRecognitionApi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abdilmajid/faceRecognitionApi/issues"
+  },
+  "homepage": "https://github.com/abdilmajid/faceRecognitionApi#readme",
+  "description": "",
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}

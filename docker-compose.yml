@@ -1,0 +1,46 @@
+versions: "3.8"
+services:
+
+  face-web:
+    build: ./face-web
+    environment:
+      # env for api call 
+      # - REACT_APP_API_CALL=http://192.168.50.154:3001
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./face-web:/app
+      - /app/node_modules
+
+  face-api:
+    build: ./face-api
+    environment:
+      # API token for clarifai service
+      # - API_CLARIFAI="<API_TOKEN>"
+      - DATABASE_URL=http://localhost:5432
+    ports:
+      - '3001:3001'
+    volumes:
+      - ./face-api:/app
+      - /app/node_modules
+
+  face-db:
+    privileged: true
+    image: postgres:14.8-alpine3.18
+    restart: always
+    environment:
+      - POSTGRES_USER=app
+      - POSTGRES_DB=faceapp
+    #NOTE: should never use below, instead should use POSTGRES_PASSWORD=<some_password>
+      - POSTGRES_HOST_AUTH_METHOD=trust
+    ports:
+      - '5432:5432'
+    volumes:
+    # here we create and link persistant postgres database, so if image is deleted the data is not lost
+      - db:/var/lib/postgresql/data
+    # here we create our initial 'login' and 'user' tables
+      - ./face-db/face.sql:/docker-entrypoint-initdb.d/create_tables.sql
+
+volumes:
+  db:
+    driver: local
