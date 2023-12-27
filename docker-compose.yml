@@ -6,7 +6,7 @@ services:
     environment:
       # env for api call
       - PORT=3000 
-      - REACT_APP_API_CALL=http://192.168.50.154:3001
+      - REACT_APP_API_CALL=http://localhost:3001
     ports:
       - '3000:3000'
     volumes:
@@ -28,7 +28,7 @@ services:
 
   face-db:
     privileged: true
-    image: postgres:14.8-alpine3.18
+    image: docker.io/library/postgres:14.8-alpine3.18
     restart: always
     environment:
       - POSTGRES_USER=app
