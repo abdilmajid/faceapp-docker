@@ -16,16 +16,16 @@ const image = require('./Controller/image');
 const db = knex({
   client: 'pg',
   connection: {
-    // host : process.env.RDS_HOSTNAME,
-    // port : process.env.RDS_PORT,
-    // user : process.env.RDS_USERNAME,
-    // password : process.env.RDS_PASSWORD,
-    // database : process.env.RDS_DATABASE
-    host: '192.168.50.154',
-    port: 5432,
-    user: 'app',
-    password: '',
-    database: 'faceapp'
+    host : process.env.DATABASE_URL,
+    port : process.env.DATABASE_PORT,
+    user : process.env.DATABASE_USER,
+    password : process.env.DATABASE_PASSWORD,
+    database : process.env.DATABASE
+    // host: '192.168.50.154',
+    // port: 5432,
+    // user: 'app',
+    // password: '',
+    // database: 'faceapp'
 
   }
 });

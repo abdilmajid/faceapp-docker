@@ -9,9 +9,6 @@ COPY --chown=app:app package*.json .
 RUN npm install
 COPY --chown=app:app . .
 
-# ENV API_CLARIFAI="5dc3929cc3234e2e8ad6117dd0af96c3"
-# ENV PORT=3001
-# ENV DATABASE_URL=http://localhost:5432
 
 EXPOSE 3001
 

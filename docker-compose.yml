@@ -9,22 +9,26 @@ services:
       - REACT_APP_API_CALL=http://localhost:3001
     ports:
       - '3000:3000'
-    volumes:
-      - ./face-web:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./face-web:/app
+    #   - /app/node_modules
 
   face-api:
     build: ./face-api
     environment:
-      # API token for clarifai service
       - PORT=3001
-      - DATABASE_URL=http://localhost:5432
+      - DATABASE_URL="localhost"
+      - DATABASE_PORT=5432
+      - DATABASE_USER="app"
+      - DATABASE_PASSWORD=""
+      - DATABASE="faceapp"
+      # API token for clarifai service
       - API_CLARIFAI="5dc3929cc3234e2e8ad6117dd0af96c3"
     ports:
       - '3001:3001'
-    volumes:
-      - ./face-api:/app
-      - /app/node_modules
+    # volumes:
+    #   - ./face-api:/app
+    #   - /app/node_modules
 
   face-db:
     privileged: true
